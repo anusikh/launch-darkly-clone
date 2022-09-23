@@ -79,10 +79,23 @@ public class AuthController {
         return res;
     }
 
+    @PostMapping("/getUser_Id")
+    @ResponseBody
+    public Map<String, Object> getUser_id(@RequestParam(name = "username") String username) throws Exception {
+        Map<String, Object> res = new HashMap<>();
+        try{
+            Long user_id = userService.getUser_Id(username);
+            res.put("user_id", user_id);
+            return res;
+        }catch(Exception e){
+            throw new Exception("Something went wrong");
+        }
+    }
+
     @PostMapping("/sample")
     @ResponseBody
-    public Map<String, Object> sample() {
-        Map<String, Object> res = Map.of("res", "PASS");
+    public Map<String, Object> sample( @RequestHeader(value = "username", required = false) String username) {
+        Map<String, Object> res = Map.of("res", "PASS", "username", username);
         return res;
     }
 
