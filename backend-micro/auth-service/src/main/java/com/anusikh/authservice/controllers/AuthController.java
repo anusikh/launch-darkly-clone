@@ -1,6 +1,5 @@
 package com.anusikh.authservice.controllers;
 
-
 import com.anusikh.authservice.service.UserService;
 import com.anusikh.authservice.util.JwtUtil;
 import org.slf4j.Logger;
@@ -8,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -58,18 +56,15 @@ public class AuthController {
     @ResponseBody
     public Map<String, Object> getToken(
             @RequestParam(name = "username") String username,
-            @RequestParam(name = "password") String password
-    ) throws Exception {
+            @RequestParam(name = "password") String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     username,
-                    password
-            ));
+                    password));
         } catch (Exception e) {
             throw new AuthenticationException("Wrong username and password", e) {
             };
         }
-
 
         final UserDetails user = userService.loadUserByUsername(username);
         String jwt = jwtUtil.generateToken(user);
@@ -83,21 +78,20 @@ public class AuthController {
     @ResponseBody
     public Map<String, Object> getUser_id(@RequestParam(name = "username") String username) throws Exception {
         Map<String, Object> res = new HashMap<>();
-        try{
+        try {
             Long user_id = userService.getUser_Id(username);
             res.put("user_id", user_id);
             return res;
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new Exception("Something went wrong");
         }
     }
 
     @PostMapping("/sample")
     @ResponseBody
-    public Map<String, Object> sample( @RequestHeader(value = "username", required = false) String username) {
+    public Map<String, Object> sample(@RequestHeader(value = "username", required = false) String username) {
         Map<String, Object> res = Map.of("res", "PASS", "username", username);
         return res;
     }
-
 
 }
