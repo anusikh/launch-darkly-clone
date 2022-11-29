@@ -1,7 +1,9 @@
 package com.anusikh.authservice.controllers;
 
+import com.anusikh.authservice.entity.User;
 import com.anusikh.authservice.service.UserService;
 import com.anusikh.authservice.util.JwtUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +83,21 @@ public class AuthController {
         try {
             Long user_id = userService.getUser_Id(username);
             res.put("user_id", user_id);
+            return res;
+        } catch (Exception e) {
+            throw new Exception("Something went wrong");
+        }
+    }
+
+    @PostMapping("/getUserFromUser_id")
+    @ResponseBody
+    public Map<String, Object> getUserFromUser_id(@RequestParam(name = "user_id") Long user_id) throws Exception {
+        Map<String, Object> res = new HashMap<>();
+        try {
+            User user = userService.getUsernameFromUser_id(user_id);
+            res.put("user_id", user_id);
+            res.put("username", user.getUsername());
+            res.put("email_id", user.getEmail_id());
             return res;
         } catch (Exception e) {
             throw new Exception("Something went wrong");

@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "USR_TBL")
@@ -29,7 +32,8 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public Long getUser_id() {
         return user_id;
