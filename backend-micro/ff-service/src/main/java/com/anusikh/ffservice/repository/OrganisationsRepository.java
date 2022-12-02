@@ -1,10 +1,10 @@
-package com.example.ffservice.repository;
+package com.anusikh.ffservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.ffservice.entity.Organisations;
+import com.anusikh.ffservice.entity.Organisations;
 
 @Repository
 public interface OrganisationsRepository extends JpaRepository<Organisations, Long> {

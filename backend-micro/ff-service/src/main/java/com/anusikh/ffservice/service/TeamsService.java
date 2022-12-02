@@ -1,4 +1,4 @@
-package com.example.ffservice.service;
+package com.anusikh.ffservice.service;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.ffservice.entity.Organisations;
-import com.example.ffservice.entity.Teams;
-import com.example.ffservice.repository.OrganisationsRepository;
-import com.example.ffservice.repository.TeamsRepository;
+import com.anusikh.ffservice.entity.Organisations;
+import com.anusikh.ffservice.entity.Teams;
+import com.anusikh.ffservice.repository.OrganisationsRepository;
+import com.anusikh.ffservice.repository.TeamsRepository;
 
 @Service
 public class TeamsService {
@@ -39,7 +39,7 @@ public class TeamsService {
             if (completableFuture.get() == null) {
                 throw new Exception("organisation has been deleted");
             }
-            teamsRepository.save((new Teams().builder()
+            teamsRepository.save((Teams.builder()
                     .team_name(team_name).team_desc(team_desc).team_creator(admins)
                     .admins(Arrays.asList(admins)).team_org(completableFuture.get())).build());
             map.put("res", "PASS");

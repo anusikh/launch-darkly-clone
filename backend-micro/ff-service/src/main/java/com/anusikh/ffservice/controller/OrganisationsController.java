@@ -1,4 +1,4 @@
-package com.example.ffservice.controller;
+package com.anusikh.ffservice.controller;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.ffservice.service.OrganisationsService;
+import com.anusikh.ffservice.service.OrganisationsService;
 
 @RestController
 @RequestMapping("/organisations")

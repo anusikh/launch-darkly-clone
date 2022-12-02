@@ -1,4 +1,4 @@
-package com.example.ffservice.service;
+package com.anusikh.ffservice.service;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.ffservice.entity.Organisations;
-import com.example.ffservice.repository.OrganisationsRepository;
+import com.anusikh.ffservice.entity.Organisations;
+import com.anusikh.ffservice.repository.OrganisationsRepository;
 
 @Service
 public class OrganisationsService {
@@ -26,7 +26,7 @@ public class OrganisationsService {
             if (organisationsRepository.findIfOrg_NameExists(org_name)) {
                 throw new Exception("organisation with the same name already exists");
             }
-            organisationsRepository.save((new Organisations().builder()
+            organisationsRepository.save((Organisations.builder()
                     .org_name(org_name).org_creator(creator)
                     .org_creation_date(new Date())).build());
             map.put("res", "PASS");

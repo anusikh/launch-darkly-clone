@@ -1,11 +1,11 @@
-package com.example.ffservice.controller;
+package com.anusikh.ffservice.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.ffservice.service.TeamsService;
+import com.anusikh.ffservice.service.TeamsService;
 
 import java.util.Map;
 

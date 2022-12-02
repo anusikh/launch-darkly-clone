@@ -1,4 +1,4 @@
-package com.example.ffservice.entity;
+package com.anusikh.ffservice.entity;
 
 import java.util.List;
 

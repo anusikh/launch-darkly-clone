@@ -1,4 +1,4 @@
-package com.example.ffservice;
+package com.anusikh.ffservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
