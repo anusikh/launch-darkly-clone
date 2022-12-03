@@ -17,6 +17,7 @@ public class SpringCloudGatewayRouting {
     public RouteLocator configureRoute(RouteLocatorBuilder builder) {
         // TODO: Make sure this filter be applied to other services not auth
         return builder.routes().route("auth", r -> r.path("/auth/**").uri("http://localhost:9009"))
+                .route("order", r -> r.path("/order/**").uri("http://localhost:9010"))
                 .route("teams", r -> r.path("/teams/**").filters(f -> f.filter(filter)).uri("http://localhost:9010"))
                 .route("organisations",
                         r -> r.path("/organisations/**").filters(f -> f.filter(filter)).uri("http://localhost:9010"))
